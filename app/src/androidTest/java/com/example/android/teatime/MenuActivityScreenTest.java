@@ -20,9 +20,16 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Rule;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onData;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.anything;
 
 /**
  * This test demos a user clicking on a GridView item in MenuActivity which opens up the
@@ -39,14 +46,20 @@ import static androidx.test.espresso.Espresso.onData;
 public class MenuActivityScreenTest {
 
     // _TODO (2) Add the rule that provides functional testing of a single activity
-    @Rule ActivityTestRule<MenuActivity> mActivityTestRule = new ActivityTestRule<>(MenuActivity.class);
+    @Rule public ActivityTestRule<MenuActivity> mActivityTestRule = new ActivityTestRule<>(MenuActivity.class);
 
-    // TODO (3) Finish writing this test which will click on a gridView Tea item and verify that
+    // _TODO (3) Finish writing this test which will click on a gridView Tea item and verify that
     //  the OrderActivity opens up with the correct tea name displayed.
-    public void clickGridViewItem_OpensOrderActivity() {
+    @Test public void clickGridViewItem_OpensOrderActivity() {
 
-         //onData( inAdapterView())
 
+        // Uses {@link Espresso#onData(org.hamcrest.Matcher)} to get a reference to a specific
+        // gridview item and clicks it.
+        onData( anything())  .inAdapterView( withId( R.id.tea_grid_view))  .atPosition(1)  .perform( click());
+
+        // Checks that the OrderActivity opens with the correct tea name displayed
+        String TEA_NAME = "Green Tea";
+        onView( withId( R.id.tea_name_text_view))  .check( matches( withText(TEA_NAME)));
 
     }
 
