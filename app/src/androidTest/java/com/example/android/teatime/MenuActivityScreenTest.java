@@ -16,10 +16,13 @@
 
 package com.example.android.teatime;
 
+import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Rule;
 import org.junit.runner.RunWith;
+
+import static androidx.test.espresso.Espresso.onData;
 
 /**
  * This test demos a user clicking on a GridView item in MenuActivity which opens up the
@@ -35,13 +38,15 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class MenuActivityScreenTest {
 
-    // TODO (2) Add the rule that provides functional testing of a single activity
-    @Rule
+    // _TODO (2) Add the rule that provides functional testing of a single activity
+    @Rule ActivityTestRule<MenuActivity> mActivityTestRule = new ActivityTestRule<>(MenuActivity.class);
 
     // TODO (3) Finish writing this test which will click on a gridView Tea item and verify that
-    // the OrderActivity opens up with the correct tea name displayed.
-
+    //  the OrderActivity opens up with the correct tea name displayed.
     public void clickGridViewItem_OpensOrderActivity() {
+
+         //onData( inAdapterView())
+
 
     }
 
