@@ -22,7 +22,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-<android.support.v7.widget.Toolbar
+<androidx.appcompat.widget.Toolbar
     android:id="@+id/order_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tea_size" />
 
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/tea_size_spinner"
                 style="@style/FormTextStyle"
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/milk_choices" />
 
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/milk_spinner"
                 style="@style/FormTextStyle"
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sugar_choices" />
 
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/sugar_spinner"
                 style="@style/FormTextStyle"
                 android:layout_width="match_parent"
