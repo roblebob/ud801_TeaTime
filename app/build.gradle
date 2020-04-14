@@ -34,9 +34,7 @@ dependencies {
 
 
 
-    // TODO (4) Add the required Espresso UI Testing dependencies
-    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
-
+    // _TODO (4) Add the required Espresso UI Testing dependencies
     // Testing-only dependencies
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
