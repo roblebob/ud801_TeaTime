@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.android.teatime"
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -17,12 +17,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
-    compile 'com.android.support:design:25.1.0'
-    compile 'com.android.support:support-annotations:25.1.0'
-    compile 'com.google.android.gms:play-services-appindexing:9.8.0'
+    implementation 'com.google.android.material:material:1.1.0'
+
+    implementation "androidx.annotation:annotation:1.1.0"
+    // To use the Java-compatible @Experimental API annotation
+    implementation "androidx.annotation:annotation-experimental:1.0.0"
+
+    implementation 'com.google.firebase:firebase-appindexing:19.1.0'
+
+
 
     // TODO (4) Add the required Espresso UI Testing dependencies
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+
+    // Testing-only dependencies
+    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+
 }
