@@ -22,6 +22,7 @@ package com.example.android.teatime;
  */
 
 // TODO (1) Add annotation to specify AndroidJUnitRunner class as the default test runner
+
 public class OrderActivityBasicTest {
 
     // TODO (2) Add the rule that provides functional testing of a single activity
