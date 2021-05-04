@@ -17,6 +17,7 @@
 package com.example.android.teatime;
 
 // TODO (1) Add annotation to specify AndroidJUnitRunner class as the default test runner
+
 public class OrderSummaryActivityTest {
 
     // TODO (2) Add the rule that indicates we want to use Espresso-Intents APIs in functional UI tests
