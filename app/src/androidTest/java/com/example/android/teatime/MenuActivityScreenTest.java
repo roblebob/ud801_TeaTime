@@ -41,14 +41,14 @@ import static org.hamcrest.Matchers.anything;
  */
 
 
-// _TODO (1) Add annotation to specify AndroidJUnitRunner class as the default test runner
+// TODO✓(1) Add annotation to specify AndroidJUnitRunner class as the default test runner
 @RunWith(AndroidJUnit4.class)
 public class MenuActivityScreenTest {
 
-    // _TODO (2) Add the rule that provides functional testing of a single activity
+    // TODO✓(2) Add the rule that provides functional testing of a single activity
     @Rule public ActivityTestRule<MenuActivity> mActivityTestRule = new ActivityTestRule<>(MenuActivity.class);
 
-    // _TODO (3) Finish writing this test which will click on a gridView Tea item and verify that
+    // TODO✓(3) Finish writing this test which will click on a gridView Tea item and verify that
     //  the OrderActivity opens up with the correct tea name displayed.
     @Test public void clickGridViewItem_OpensOrderActivity() {
 
