@@ -19,7 +19,6 @@ package com.example.android.teatime;
 import android.app.Activity;
 import android.content.Intent;
 
-
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
 import org.junit.Before;
@@ -46,9 +45,7 @@ import static org.hamcrest.core.AllOf.allOf;
 @RunWith(JUnit4.class)
 public class OrderSummaryActivityTest {
 
-
-    private static final String emailMessage =
-
+    private static final String emailMessage = "I just ordered a delicious tea from TeaTime. Next time you are craving a tea, check them out!";
 
     // TODO✓(2) Add the rule that indicates we want to use Espresso-Intents APIs in functional UI tests
     @Rule public IntentsTestRule< OrderSummaryActivity> mActivityTestRule = new IntentsTestRule<>( OrderSummaryActivity.class);
@@ -59,7 +56,7 @@ public class OrderSummaryActivityTest {
         intending( not( isInternal()))   .respondWith(  new ActivityResult( Activity.RESULT_OK, null));
     }
 
-    // TODO (4) Finish this method which verifies that the intent sent by clicking the send email button matches the intent sent by the application
+    // TODO✓(4) Finish this method which verifies that the intent sent by clicking the send email button matches the intent sent by the application
     @Test
     public void clickSendEmailButton_SendsEmail() {
         onView( withId( R.id.send_email_button)) .perform( click());
