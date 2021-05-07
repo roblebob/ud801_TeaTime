@@ -17,6 +17,7 @@
 package com.example.android.teatime;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
@@ -28,9 +29,16 @@ import org.junit.runners.JUnit4;
 
 
 import static android.app.Instrumentation.ActivityResult;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.Intents.intending;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasAction;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.isInternal;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.AllOf.allOf;
 
 
 // TODO✓(1) Add annotation to specify AndroidJUnitRunner class as the default test runner
@@ -49,6 +57,11 @@ public class OrderSummaryActivityTest {
     // TODO (4) Finish this method which verifies that the intent sent by clicking the send email button matches the intent sent by the application
     @Test
     public void clickSendEmailButton_SendsEmail() {
+        onView( withId( R.id.send_email_button)) .perform( click());
 
+        intended( allOf(
+                hasAction(Intent.ACTION_SEND),
+                hasExtra(Intent.EXTRA_TEXT, getString(R.string.email_message))
+        ));
     }
 }
