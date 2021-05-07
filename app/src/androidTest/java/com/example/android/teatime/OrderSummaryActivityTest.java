@@ -19,6 +19,7 @@ package com.example.android.teatime;
 import android.app.Activity;
 import android.content.Intent;
 
+
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
 import org.junit.Before;
@@ -45,6 +46,10 @@ import static org.hamcrest.core.AllOf.allOf;
 @RunWith(JUnit4.class)
 public class OrderSummaryActivityTest {
 
+
+    private static final String emailMessage =
+
+
     // TODO✓(2) Add the rule that indicates we want to use Espresso-Intents APIs in functional UI tests
     @Rule public IntentsTestRule< OrderSummaryActivity> mActivityTestRule = new IntentsTestRule<>( OrderSummaryActivity.class);
 
@@ -61,7 +66,7 @@ public class OrderSummaryActivityTest {
 
         intended( allOf(
                 hasAction(Intent.ACTION_SEND),
-                hasExtra(Intent.EXTRA_TEXT, getString(R.string.email_message))
+                hasExtra(Intent.EXTRA_TEXT, emailMessage)
         ));
     }
 }
