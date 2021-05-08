@@ -40,22 +40,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-appindexing:19.2.0'
 
     // Testing-only dependencies
-    androidTestImplementation 'androidx.test:core:1.3.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    androidTestImplementation 'androidx.test:rules:1.3.0'
+    androidTestImplementation 'androidx.annotation:annotation:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation 'androidx.test.expresso:expresso-intents:3.3.0'     // TODO (5) Add build dependencies required to use Espresso-Intents
-    androidTestImplementation 'androidx.test.ext:truth:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0' // TODO (5) Add build dependencies required to use Espresso-Intents
+    androidTestImplementation 'androidx.test:rules:1.3.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'org.robolectric:annotations:4.5.1'
-
-    testImplementation 'androidx.test:core:1.3.0'
-    testImplementation 'androidx.test.ext:junit:1.1.2'
-    testImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    testImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
-    testImplementation 'androidx.test.ext:truth:1.3.0'
-    testImplementation 'androidx.test.ext:junit:1.1.2'
-    testImplementation 'org.robolectric:robolectric:4.5.1'
-
 }

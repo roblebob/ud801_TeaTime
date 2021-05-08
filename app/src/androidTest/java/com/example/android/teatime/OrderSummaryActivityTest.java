@@ -62,10 +62,10 @@ public class OrderSummaryActivityTest {
         onView( withId( R.id.send_email_button)) .perform( click());
 
         intended( allOf(
-                hasAction(Intent.ACTION_SEND),
+                hasAction( Intent.ACTION_SEND),
                 hasData( Uri.parse("mailto:")),
                 hasExtra( Intent.EXTRA_SUBJECT, "Freshly Brewed from TeaTime"),
-                hasExtra(Intent.EXTRA_TEXT, "I just ordered a delicious tea from TeaTime. Next time you are craving a tea, check them out!")
+                hasExtra( Intent.EXTRA_TEXT, "I just ordered a delicious tea from TeaTime. Next time you are craving a tea, check them out!")
         ));
     }
 }
