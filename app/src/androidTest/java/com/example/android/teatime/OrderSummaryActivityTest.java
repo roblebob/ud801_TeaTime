@@ -18,6 +18,7 @@ package com.example.android.teatime;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 
@@ -34,6 +35,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.Intents.intending;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasAction;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasData;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.isInternal;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -44,8 +46,6 @@ import static org.hamcrest.core.AllOf.allOf;
 // TODO✓(1) Add annotation to specify AndroidJUnitRunner class as the default test runner
 @RunWith(JUnit4.class)
 public class OrderSummaryActivityTest {
-
-    private static final String emailMessage = "I just ordered a delicious tea from TeaTime. Next time you are craving a tea, check them out!";
 
     // TODO✓(2) Add the rule that indicates we want to use Espresso-Intents APIs in functional UI tests
     @Rule public IntentsTestRule< OrderSummaryActivity> mActivityTestRule = new IntentsTestRule<>( OrderSummaryActivity.class);
@@ -63,7 +63,9 @@ public class OrderSummaryActivityTest {
 
         intended( allOf(
                 hasAction(Intent.ACTION_SEND),
-                hasExtra(Intent.EXTRA_TEXT, emailMessage)
+                hasData( Uri.parse("mailto:")),
+                hasExtra( Intent.EXTRA_SUBJECT, "Freshly Brewed from TeaTime"),
+                hasExtra(Intent.EXTRA_TEXT, "I just ordered a delicious tea from TeaTime. Next time you are craving a tea, check them out!")
         ));
     }
 }
