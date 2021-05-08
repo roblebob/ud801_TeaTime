@@ -44,6 +44,7 @@ public class OrderSummaryActivityTest {
 
     private static final String emailMessage = "I just ordered a delicious tea from TeaTime. Next time you are craving a tea, check them out!";
 
+
     /**
      *
      * This test demonstrates Espresso Intents using the IntentsTestRule, a class that extends
@@ -69,8 +70,7 @@ public class OrderSummaryActivityTest {
     public void clickSendEmailButton_SendsEmail() {
 
         onView(withId(R.id.send_email_button)).perform(click());
-        // intended(Matcher<Intent> matcher) asserts the given matcher matches one and only one
-        // intent sent by the application.
+        // intended(Matcher<Intent> matcher) asserts the given matcher matches one and only one intent sent by the application.
         intended(allOf(
                 hasAction(Intent.ACTION_SENDTO),
                 hasExtra(Intent.EXTRA_TEXT, emailMessage)));
