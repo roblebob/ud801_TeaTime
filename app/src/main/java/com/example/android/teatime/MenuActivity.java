@@ -39,6 +39,10 @@ import java.util.ArrayList;
 public class MenuActivity extends AppCompatActivity implements ImageDownloader.DelayerCallback {
 
     Intent mTeaIntent;
+    GridView mGridview;
+    ArrayList<Tea> teaList;
+    TeaMenuAdapter mAdapter;
+
 
     public final static String EXTRA_TEA_NAME = "com.example.android.teatime.EXTRA_TEA_NAME";
 
@@ -81,6 +85,23 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
     @Override
     public void onDone(ArrayList<Tea> teaList) {
 
+
+
+
+        // Set a click listener on that View
+        mGridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                Tea item = (Tea) adapterView.getItemAtPosition(position);
+                // Set the intent to open the {@link OrderActivity}
+                mTeaIntent = new Intent(MenuActivity.this, OrderActivity.class);
+                String teaName = item.getTeaName();
+                mTeaIntent.putExtra(EXTRA_TEA_NAME, teaName);
+                startActivity(mTeaIntent);
+            }
+        });
+
     }
 
 
@@ -94,33 +115,21 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
         getSupportActionBar().setTitle(getString(R.string.menu_title));
 
         // Create an ArrayList of teas
-        final ArrayList<Tea> teas = new ArrayList<>();
-        teas.add(new Tea(getString(R.string.black_tea_name), R.drawable.black_tea));
-        teas.add(new Tea(getString(R.string.green_tea_name), R.drawable.green_tea));
-        teas.add(new Tea(getString(R.string.white_tea_name), R.drawable.white_tea));
-        teas.add(new Tea(getString(R.string.oolong_tea_name), R.drawable.oolong_tea));
-        teas.add(new Tea(getString(R.string.honey_lemon_tea_name), R.drawable.honey_lemon_tea));
-        teas.add(new Tea(getString(R.string.chamomile_tea_name), R.drawable.chamomile_tea));
+        teaList = new ArrayList<>();
+//        teas.add(new Tea(getString(R.string.black_tea_name), R.drawable.black_tea));
+//        teas.add(new Tea(getString(R.string.green_tea_name), R.drawable.green_tea));
+//        teas.add(new Tea(getString(R.string.white_tea_name), R.drawable.white_tea));
+//        teas.add(new Tea(getString(R.string.oolong_tea_name), R.drawable.oolong_tea));
+//        teas.add(new Tea(getString(R.string.honey_lemon_tea_name), R.drawable.honey_lemon_tea));
+//        teas.add(new Tea(getString(R.string.chamomile_tea_name), R.drawable.chamomile_tea));
 
         // Create a {@link TeaAdapter}, whose data source is a list of {@link Tea}s.
         // The adapter know how to create grid items for each item in the list.
-        GridView gridview = (GridView) findViewById(R.id.tea_grid_view);
-        TeaMenuAdapter adapter = new TeaMenuAdapter(this, R.layout.grid_item_layout, teas);
-        gridview.setAdapter(adapter);
+        mGridview = (GridView) findViewById( R.id.tea_grid_view);
+        mAdapter = new TeaMenuAdapter(this, R.layout.grid_item_layout, teas);
+        mGridview .setAdapter( mAdapter);
 
 
-        // Set a click listener on that View
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-                Tea item = (Tea) adapterView.getItemAtPosition(position);
-                // Set the intent to open the {@link OrderActivity}
-                mTeaIntent = new Intent(MenuActivity.this, OrderActivity.class);
-                String teaName = item.getTeaName();
-                mTeaIntent.putExtra(EXTRA_TEA_NAME, teaName);
-                startActivity(mTeaIntent);
-            }
-        });
     }
 }
