@@ -17,6 +17,8 @@
 package com.example.android.teatime;
 
 
+import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.IdlingResource;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -47,7 +49,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class IdlingResourceMenuActivityTest {
 
-    /**
+    /** (OLD)
      * The ActivityTestRule is a rule provided by Android used for functional testing of a single
      * activity. The activity that will be tested, MenuActivity in this case, will be launched
      * before each test that's annotated with @Test and before methods annotated with @Before.
@@ -55,17 +57,30 @@ public class IdlingResourceMenuActivityTest {
      * The activity will be terminated after the test and methods annotated with @After are
      * complete. This rule allows you to directly access the activity during the test.
      */
-    @Rule
-    public ActivityTestRule<MenuActivity> mActivityTestRule =
-            new ActivityTestRule<>(MenuActivity.class);
+    // @Rule public ActivityTestRule<MenuActivity> mActivityTestRule = new ActivityTestRule<>(MenuActivity.class);
+
+
+
 
     private IdlingResource mIdlingResource;
 
+    /**
+     * Use {@link ActivityScenario to launch and get access to the activity.
+     * {@link ActivityScenario#onActivity(ActivityScenario.ActivityAction)} provides a thread-safe
+     * mechanism to access the activity.
+     */
 
-    // TODO (6) Registers any resource that needs to be synchronized with Espresso before
-    // the test is run.
+    // TODO (6) Registers any resource that needs to be synchronized with Espresso before the test is run.
     @Before
     public void registerIdlingResource() {
+
+        ActivityScenario activityScenario = ActivityScenario .launch( MenuActivity.class);
+
+        activityScenario .onActivity( (ActivityScenario.ActivityAction<MenuActivity>) activity -> {
+
+            mIdlingResource = activity. getIdlingResource();
+            IdlingRegistry .getInstance() .register( mIdlingResource);
+        });
 
     }
 
@@ -78,6 +93,8 @@ public class IdlingResourceMenuActivityTest {
     // TODO (8) Unregister resources when not needed to avoid malfunction
     @After
     public void unregisterIdlingResource() {
-
+        if (mIdlingResource != null) {
+            IdlingRegistry .getInstance() .unregister( mIdlingResource);
+        }
     }
 }

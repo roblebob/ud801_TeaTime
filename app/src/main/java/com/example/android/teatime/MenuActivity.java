@@ -35,14 +35,14 @@ import com.example.android.teatime.model.Tea;
 
 import java.util.ArrayList;
 
-// TODO (1) Implement ImageDownloader.DelayerCallback
+// TODO✓(1) Implement ImageDownloader.DelayerCallback
 public class MenuActivity extends AppCompatActivity implements ImageDownloader.DelayerCallback {
 
     Intent mTeaIntent;
 
     public final static String EXTRA_TEA_NAME = "com.example.android.teatime.EXTRA_TEA_NAME";
 
-    // TODO (2) Add a SimpleIdlingResource variable that will be null in production
+    // TODO✓(2) Add a SimpleIdlingResource variable that will be null in production
     @Nullable SimpleIdlingResource mSimpleIdlingResource = new SimpleIdlingResource();
 
 
@@ -59,7 +59,7 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
 
 
     /**
-     * TODO (3) Create a method that returns the IdlingResource variable.
+     * TODO✓(3) Create a method that returns the IdlingResource variable.
      * It will instantiate a new instance of SimpleIdlingResource if the IdlingResource is null.
      * This method will only be called from test.
      */
@@ -74,7 +74,7 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
 
 
     /**
-     * TODO (4) Using the method you created, get the IdlingResource variable.
+     * TODO✓(4) Using the method you created, get the IdlingResource variable.
      * Then call downloadImage from ImageDownloader.
      * To ensure there's enough time for IdlingResource to be initialized, remember to call downloadImage in either onStart or onResume.
      * This is because @Before in Espresso Tests is executed after the activity is created in onCreate,
@@ -88,13 +88,12 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
 
 
 
-    // TODO (5) Override onDone so when the thread in ImageDownloader is finished, it returns an ArrayList of Tea objects via the callback.
+    // TODO✓(5) Override onDone so when the thread in ImageDownloader is finished, it returns an ArrayList of Tea objects via the callback.
     @Override
     public void onDone(ArrayList<Tea> teaList) {
 
         // Create a {@link TeaAdapter}, whose data source is a list of {@link Tea}s.
         // The adapter know how to create grid items for each item in the list.
-
         GridView gridview = (GridView) findViewById( R.id.tea_grid_view);
         TeaMenuAdapter adapter = new TeaMenuAdapter(this, R.layout.grid_item_layout, teaList);
         gridview .setAdapter( adapter);
