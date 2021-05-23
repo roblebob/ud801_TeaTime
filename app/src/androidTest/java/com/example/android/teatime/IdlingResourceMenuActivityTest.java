@@ -75,7 +75,7 @@ public class IdlingResourceMenuActivityTest {
      * mechanism to access the activity.
      */
 
-    // TODO (6) Registers any resource that needs to be synchronized with Espresso before the test is run.
+    // TODO✓(6) Registers any resource that needs to be synchronized with Espresso before the test is run.
     @Before
     public void registerIdlingResource() {
 
@@ -89,13 +89,13 @@ public class IdlingResourceMenuActivityTest {
 
     }
 
-    // TODO (7) Test that the gridView with Tea objects appears and we can click a gridView item
+    // TODO✓(7) Test that the gridView with Tea objects appears and we can click a gridView item
     @Test
     public void idlingResourceTest() {
         onData( anything()) .inAdapterView( withId( R.id.tea_grid_view)) .atPosition(0) .perform(click());
     }
 
-    // TODO (8) Unregister resources when not needed to avoid malfunction
+    // TODO✓(8) Unregister resources when not needed to avoid malfunction
     @After
     public void unregisterIdlingResource() {
         if (mIdlingResource != null) {
