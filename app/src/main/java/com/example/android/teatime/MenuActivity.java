@@ -40,12 +40,22 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
 
     Intent mTeaIntent;
 
-
-
     public final static String EXTRA_TEA_NAME = "com.example.android.teatime.EXTRA_TEA_NAME";
 
     // TODO (2) Add a SimpleIdlingResource variable that will be null in production
     @Nullable SimpleIdlingResource mSimpleIdlingResource = new SimpleIdlingResource();
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+        Toolbar menuToolbar = (Toolbar) findViewById(R.id.menu_toolbar);
+        setSupportActionBar(menuToolbar);
+        getSupportActionBar().setTitle(getString(R.string.menu_title));
+
+        getIdlingResource();
+    }
 
 
     /**
@@ -73,7 +83,6 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
     @Override
     protected void onStart() {
         super.onStart();
-
         ImageDownloader.downloadImage( this, this, mSimpleIdlingResource);
     }
 
@@ -108,12 +117,5 @@ public class MenuActivity extends AppCompatActivity implements ImageDownloader.D
 
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-        Toolbar menuToolbar = (Toolbar) findViewById(R.id.menu_toolbar);
-        setSupportActionBar(menuToolbar);
-        getSupportActionBar().setTitle(getString(R.string.menu_title));
-    }
+
 }
